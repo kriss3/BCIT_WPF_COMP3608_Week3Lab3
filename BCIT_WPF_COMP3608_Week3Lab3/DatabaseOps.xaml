@@ -5,13 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BCIT_WPF_COMP3608_Week3Lab3"
         mc:Ignorable="d"
-        Title="WPF COMP3608 - Practice with Data Templates and Groups" Height="350" Width="525" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="WPF COMP3608 - Practice with Data Templates and Groups" Height="393.916" Width="856.369" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Name="Grid1">
-        <ListBox Margin="22,40,281,149" Name="listBox1"
+        <ListBox Margin="22,40,0,149" Name="listBox1"
                  ItemsSource="{Binding}"
                  IsSynchronizedWithCurrentItem="True"
                  HorizontalAlignment="Left"
-                 Width="198">
+                 Width="527">
+            <ListBox.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding Path}"
+                                   Foreground="White"
+                                   Padding="4">
+                                <Label.Background>
+                                    <LinearGradientBrush>
+                                        <GradientStop Color="Blue" Offset="0"/>
+                                        <GradientStop Color="Green" Offset=".25"/>
+                                        <GradientStop Color="Yellow" Offset=".5"/>
+                                        <GradientStop Color="Orange" Offset=".75"/>
+                                        <GradientStop Color="Red" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Background>
+                            </Label>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListBox.GroupStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -38,47 +59,47 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Margin="0,40,68,149" 
+        <ListBox Margin="0,40,25.6,149" 
                  Name="listBox2" 
                  HorizontalAlignment="Right" 
-                 Width="192"
+                 Width="237"
                  ItemsSource="{Binding Path=CustomersOrders}"
                  DisplayMemberPath="OrderDate"
                  IsSynchronizedWithCurrentItem="True"/>
         <Label Height="23" HorizontalAlignment="Left" Margin="22,13,0,0" Name="label1" VerticalAlignment="Top" Width="198">Contact Name</Label>
-        <Label Height="24" Margin="241,13,68,0" Name="label2" VerticalAlignment="Top">Order Date</Label>
+        <Label Height="24" Margin="587,13,70.6,0" Name="label2" VerticalAlignment="Top">Order Date</Label>
         <TextBox Text="{Binding Path=CustomersOrders/ShipName}"
                  Height="21" 
                  HorizontalAlignment="Left" 
-                 Margin="92,0,0,96" 
+                 Margin="150,0,0,106" 
                  Name="textBox1" 
                  VerticalAlignment="Bottom" 
-                 Width="120" />
+                 Width="399" />
         <TextBox Text="{Binding Path=CustomersOrders/ShipAddress}" 
                  Height="21" 
                  HorizontalAlignment="Left" 
-                 Margin="92,0,0,66" 
+                 Margin="150,0,0,76" 
                  Name="textBox2" 
                  VerticalAlignment="Bottom"
-                 Width="120" />
+                 Width="399" />
         <TextBox Text="{Binding Path=CustomersOrders/ShipCity}" 
                  Height="21" 
                  HorizontalAlignment="Left" 
-                 Margin="92,0,0,38" 
+                 Margin="150,0,0,47" 
                  Name="textBox3" 
                  VerticalAlignment="Bottom" 
-                 Width="120" />
+                 Width="399" />
         <TextBox Text="{Binding Path=CustomersOrders/ShipCountry}" 
                  Height="21" 
                  HorizontalAlignment="Left" 
-                 Margin="92,0,0,8" 
+                 Margin="150,0,0,18" 
                  Name="textBox4" 
                  VerticalAlignment="Bottom" 
-                 Width="120" />
+                 Width="399" />
         <ListBox ItemsSource="{Binding Path=CustomersOrders/Orders_OrderDetailsExtended}"
                  Name="listBox3" 
-                 Height="109" 
-                 Margin="241,0,68,8" 
+                 Height="99" 
+                 Margin="580,0,26.5,18" 
                  VerticalAlignment="Bottom">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -96,10 +117,10 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Height="23" Margin="241,0,68,120" Name="label3" VerticalAlignment="Bottom">Products Ordered</Label>
-        <Label Height="30" HorizontalAlignment="Left" Margin="10,0,0,87" Name="label4" VerticalAlignment="Bottom" Width="75">Ship Name</Label>
-        <Label Height="23" HorizontalAlignment="Left" Margin="10,0,0,64" Name="label5" VerticalAlignment="Bottom" Width="75">Address</Label>
-        <Label Height="29" HorizontalAlignment="Left" Margin="10,0,0,30" Name="label6" VerticalAlignment="Bottom" Width="75">City</Label>
-        <Label Height="29" HorizontalAlignment="Left" Margin="10,0,0,0" Name="label7" VerticalAlignment="Bottom" Width="75">Country</Label>
+        <Label Height="23" Margin="587,0,70.6,120" Name="label3" VerticalAlignment="Bottom">Products Ordered</Label>
+        <Label Height="30" HorizontalAlignment="Left" Margin="22,0,0,105" Name="label4" VerticalAlignment="Bottom" Width="75">Ship Name</Label>
+        <Label Height="23" HorizontalAlignment="Left" Margin="22,0,0,82" Name="label5" VerticalAlignment="Bottom" Width="75">Address</Label>
+        <Label Height="29" HorizontalAlignment="Left" Margin="22,0,0,48" Name="label6" VerticalAlignment="Bottom" Width="75">City</Label>
+        <Label Height="29" HorizontalAlignment="Left" Margin="22,0,0,18" Name="label7" VerticalAlignment="Bottom" Width="75">Country</Label>
     </Grid>
 </Window>

@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using BCIT_WPF_COMP3608_Week3Lab3.Converters;
 using DataAccess;
 using DataAccess.Northwind2013DataSetTableAdapters;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Data;
 
 namespace BCIT_WPF_COMP3608_Week3Lab3
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DatabaseOps.xaml
     /// </summary>
     public partial class DatabaseOps : Window
     {
@@ -34,6 +24,12 @@ namespace BCIT_WPF_COMP3608_Week3Lab3
             ordAdap.Fill(aset.Orders);
             ord_det_extAdap.Fill(aset.Order_Details_Extended);
             Grid1.DataContext = aset.Customers;
+
+            ICollectionView aView;
+            aView = CollectionViewSource.GetDefaultView(aset.Customers);
+            aView.GroupDescriptions.Add(new PropertyGroupDescription("Country", new CountryGrouper()));
+
+            aView.SortDescriptions.Add(new SortDescription("Country", ListSortDirection.Ascending));
         }
     }
 }
