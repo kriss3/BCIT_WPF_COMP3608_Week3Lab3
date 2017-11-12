@@ -5,14 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BCIT_WPF_COMP3608_Week3Lab3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="WPF COMP3608 - Practice with Data Templates and Groups" Height="350" Width="525" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Name="Grid1">
         <ListBox Margin="22,40,281,149" Name="listBox1"
                  ItemsSource="{Binding}"
-                 DisplayMemberPath="ContactName"
                  IsSynchronizedWithCurrentItem="True"
                  HorizontalAlignment="Left"
-                 Width="198"/>
+                 Width="198">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Background="Purple"
+                           Foreground="White"
+                           BorderBrush="Red"
+                           BorderThickness="4"
+                           Width="300">
+                            <Label.Content>
+                                <StackPanel HorizontalAlignment="Stretch">
+                                    <TextBlock>Company Name:</TextBlock>
+                                    <TextBlock Text="{Binding CompanyName}"/>
+                                </StackPanel>
+                            </Label.Content>
+                        </Label>
+                        <Label Content="{Binding ContactName}" 
+                           BorderBrush="Black"
+                           HorizontalAlignment="Stretch"
+                           Background="Yellow"
+                           BorderThickness="3"
+                           Foreground="Blue"
+                           Width="200"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <ListBox Margin="0,40,68,149" 
                  Name="listBox2" 
                  HorizontalAlignment="Right" 
@@ -51,11 +76,26 @@
                  VerticalAlignment="Bottom" 
                  Width="120" />
         <ListBox ItemsSource="{Binding Path=CustomersOrders/Orders_OrderDetailsExtended}"
-                 DisplayMemberPath="ProductName"
+                 Name="listBox3" 
                  Height="109" 
                  Margin="241,0,68,8" 
-                 Name="listBox3" 
-                 VerticalAlignment="Bottom" />
+                 VerticalAlignment="Bottom">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Background="Yellow"
+                           Content="{Binding Path=Quantity}"
+                           Width="25"/>
+                        <Label Background="AliceBlue"
+                           Content="{Binding Path=ProductName}"
+                           MinWidth="120"/>
+                        <Label Background="Red"
+                           Content="{Binding Path=ExtendedPrice}"
+                           Width="50"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <Label Height="23" Margin="241,0,68,120" Name="label3" VerticalAlignment="Bottom">Products Ordered</Label>
         <Label Height="30" HorizontalAlignment="Left" Margin="10,0,0,87" Name="label4" VerticalAlignment="Bottom" Width="75">Ship Name</Label>
         <Label Height="23" HorizontalAlignment="Left" Margin="10,0,0,64" Name="label5" VerticalAlignment="Bottom" Width="75">Address</Label>
