@@ -9,6 +9,9 @@ namespace BCIT_WPF_COMP3608_Week3Lab3
 {
     /// <summary>
     /// Interaction logic for DatabaseOps.xaml
+    /// Krzysztof Szczurowski
+    /// Repo address: https://github.com/kriss3/BCIT_WPF_COMP3608_Week3Lab3.git
+    /// Uses Northwind2013.accdb Access DB as a DataSource.
     /// </summary>
     public partial class DatabaseOps : Window
     {
